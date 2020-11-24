@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/activacion/{user}','activacionController@activar');
 
+
 Route::middleware('auth:sanctum')->get('/productos','ProductController@mostrarTodos')->middleware('verificar');
 Route::middleware('auth:sanctum')->get('/productos/{producto}','ProductController@mostrar')->middleware('verificar');
 Route::middleware('auth:sanctum')->get('/productos/{producto}/comentarios','ProductController@comentarios')->middleware('verificar');
@@ -33,7 +34,7 @@ Route::middleware('auth:sanctum')->post('/comentarios/{producto}','CommentContro
 Route::middleware('auth:sanctum')->put('/comentarios/{comentario}/edit','CommentController@modificar')->middleware('verificar');
 Route::middleware('auth:sanctum')->delete('/comentarios/{comentario}','CommentController@eliminar')->middleware('verificar');
 
-
+Route::middleware('auth:sanctum')->post('usuarios/{id}/subirFoto','subirArchivoController@subir');
 Route::middleware('auth:sanctum')->get('/usuarios','UserController@usuarios')->middleware('verificar');
 Route::middleware('auth:sanctum')->get('/usuarios/{usuario}','UserController@mostrar')->middleware('verificar');
 Route::middleware('auth:sanctum')->get('/usuarios/{usuario}/comentarios/','UserController@comentarios_usuario')->middleware('verificar');
